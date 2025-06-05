@@ -16,13 +16,17 @@ Appointment.delete_all
 Doctor.delete_all
 Patient.delete_all
 City.delete_all
+Specialty.delete_all
+DoctorSpecialty.delete_all
 ActiveRecord::Base.connection.execute("PRAGMA foreign_keys = ON")
 ActiveRecord::Base.connection.execute("DELETE FROM sqlite_sequence WHERE name='appointments'")
 ActiveRecord::Base.connection.execute("DELETE FROM sqlite_sequence WHERE name='doctors'")
 ActiveRecord::Base.connection.execute("DELETE FROM sqlite_sequence WHERE name='patients'")
 ActiveRecord::Base.connection.execute("DELETE FROM sqlite_sequence WHERE name='cities'")
+ActiveRecord::Base.connection.execute("DELETE FROM sqlite_sequence WHERE name='specialties'")
+ActiveRecord::Base.connection.execute("DELETE FROM sqlite_sequence WHERE name='doctor_specialties'")
 # ActiveRecord::Base.connection.execute("DELETE FROM sqlite_sequence WHERE name='appointments'")
-specialties = [ "GP", "Oncologist", "ophthalmologist", "dentist", "gynecologist", "psychiatrist" ]
+specialty_names = [ "GP", "Oncologist", "ophthalmologist", "dentist", "gynecologist", "psychiatrist" ]
 doctors=[]
 patients = []
 # doctor.specialties << [spec1, spec2, spec3]
@@ -68,7 +72,7 @@ puts "Ajout des villes..."
 end
 
 puts "Ajout des spécialités..."
-specialties.each do |name|
+specialty_names.each do |name|
   Specialty.create!(name: name)
 end
 
@@ -102,10 +106,9 @@ puts "Ajout des rdv..."
 end
 
 puts "Ajout des spécialités de chaque docteur..."
-
+specialties = Specialty.all.to_a
 doctors.each do |doctor|
-  specialties.sample(rand(1..3)).each do |specialty_name|
-    specialty = Specialty.find_by(name: specialty_name)
+  specialties.sample(rand(1..3)).each do |specialty|
     doctor.specialties.push specialty unless doctor.specialties.include?(specialty)
   end
 end

@@ -31,8 +31,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_05_171019) do
   end
 
   create_table "doctor_specialties", force: :cascade do |t|
-    t.integer "doctor_id", null: false
-    t.integer "specialty_id", null: false
+    t.integer "doctor_id"
+    t.integer "specialty_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["doctor_id", "specialty_id"], name: "index_doctor_specialties_on_doctor_and_specialty", unique: true
@@ -64,7 +64,4 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_05_171019) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_specialties_on_name", unique: true
   end
-
-  add_foreign_key "doctor_specialties", "doctors"
-  add_foreign_key "doctor_specialties", "specialties"
 end

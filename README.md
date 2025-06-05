@@ -84,7 +84,7 @@ access rails console
 ```bash
 rails c
 ```
-### add new doctor, new patient, new appointment, new city, new specialty
+### add new doctor, new patient, new appointment, new city, new specialty,new doctorspeciality
 ```bash
 City.create!(name: "Marseille")
 Specialty.create!(name: "Psychiatrist")
