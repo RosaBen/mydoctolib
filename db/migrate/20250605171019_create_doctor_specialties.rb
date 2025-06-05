@@ -6,6 +6,6 @@ class CreateDoctorSpecialties < ActiveRecord::Migration[8.0]
 
       t.timestamps
     end
-    add_index :doctor_specialties, [ :doctor_id, :specialty_id ], unique: true, name: 'index_doctor_specialties_on_doctor_and_specialty'
+    add_index :doctor_specialties, [ :doctor_id, :specialty_id ], unique: true
   end
 end
