@@ -40,8 +40,8 @@ rails c
 ```
 #### add new doctor, new patient, new appointment
 ```bash
-Doctor.new(last_name: "Abracadabra++", first_name:"Houdini++", specialty: "GP", zip_code: "92100").save
-Patient.new(last_name: "rosa++", first_name:"Louloulou").save
+Doctor.new(last_name: "Abracadabra", first_name:"Houdini", specialty: "GP", zip_code: "92100").save
+Patient.new(last_name: "Loulou", first_name:"Rosa").save
 Appointment.new(date: "2025-06-13 09:00:00", doctor_id: 1, patient_id: 1).save
 ```
 #### check All classes
