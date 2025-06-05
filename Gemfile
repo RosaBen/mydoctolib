@@ -63,4 +63,5 @@ group :test do
 end
 
 gem "table_print"
+
 gem "faker"
